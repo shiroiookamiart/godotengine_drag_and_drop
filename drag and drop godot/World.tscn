@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.619, 32.8665 )
+
+[node name="World" type="Node2D"]
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 477.522, 269.051 )
+input_pickable = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Col" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 1 )
+
+[node name="img" type="Sprite" parent="Player/Col"]
+texture = ExtResource( 1 )
+
+[connection signal="input_event" from="Player" to="Player" method="_on_Player_input_event"]
